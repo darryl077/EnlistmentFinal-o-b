@@ -3,8 +3,8 @@ package com.orangeandbronze.enlistment;
 public class Room {
 	
 	private final String roomName;
-	private static int roomCapacity = 3;
-	private int capacityNum = 0;
+	private static int roomCapacity = 10;
+	private static int capacityNum = 0; 
 	
 	
 	public Room(String roomName){
@@ -22,7 +22,7 @@ public class Room {
 		capacityNum++;
 	}
 	
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
