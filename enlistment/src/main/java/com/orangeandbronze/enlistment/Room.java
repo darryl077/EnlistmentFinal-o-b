@@ -4,7 +4,7 @@ public class Room {
 	
 	private final String roomName;
 	private static int roomCapacity = 3;
-	private static int capacityNum = 0;
+	private int capacityNum = 0;
 	
 	
 	public Room(String roomName){

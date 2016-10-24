@@ -14,17 +14,17 @@ public class RoomTest {
 
 	@Test
 	public void roomIsalpahNumeric() {
-		Room room = new Room("RM1");
-//		assert
+		Room room = new Room("RM1");		
 	}
 	
 	
-	@Test(expected=IllegalArgumentException.class)
-	public void roomCapacityTest(){
+	@Test
+	public void roomCapacityTestCapReached(){
 		Room room1 = new Room("RM1");
 		Room room2 = new Room("RM1");
 		Room room3 = new Room("RM1");
-		
+		Room room4 = new Room("RM1");
+		Room room5 = new Room("RM1");		
 
 	}
 
