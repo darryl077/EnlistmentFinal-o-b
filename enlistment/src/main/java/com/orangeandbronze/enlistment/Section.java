@@ -5,8 +5,10 @@ public class Section {
 	private final String sectionId;
 	private final Schedule schedule;
 	private final Room room;
+	private final Subject subject;
 	
-	public Section(String sectionId, Schedule schedule, Room room){
+	
+	public Section(String sectionId, Schedule schedule, Room room, Subject subject){
 
 		if(!sectionId.matches("[A-Za-z0-9]+")){
 			throw new IllegalArgumentException("Section ID must be alphanumeric. Was: " + sectionId);
@@ -23,6 +25,7 @@ public class Section {
 		this.sectionId = sectionId;
 		this.schedule = schedule;
 		this.room = room;
+		this.subject = subject;
 	}
 
 	public Schedule getSchedule() {
@@ -38,6 +41,7 @@ public class Section {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((sectionId == null) ? 0 : sectionId.hashCode());
+		result = prime * result + ((subject == null) ? 0 : subject.hashCode());
 		return result;
 	}
 
@@ -55,9 +59,14 @@ public class Section {
 				return false;
 		} else if (!sectionId.equals(other.sectionId))
 			return false;
+		if (subject == null) {
+			if (other.subject != null)
+				return false;
+		} else if (!subject.equals(other.subject))
+			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Section [sectionId=" + sectionId + ", schedule=" + schedule + ", room=" + room + "]";
@@ -67,6 +76,15 @@ public class Section {
 	void checkForConflictWith(Section other){
 		if(this.schedule.equals(other.schedule)){
 			throw new ScheduleconflictException("This section has same schedule with other section");
+			
+		}
+		if(this.subject.getCourse().equals(other.subject.getCourse())){
+			throw new SubjectconflictException("This Subject is already enlisted");
+			
+		}
+		
+		if(this.subject.getSubjectId().equals(other.subject.getSubjectId())){
+			throw new SubjectconflictException("This Subject is already enlisted2");
 			
 		}
 	}
