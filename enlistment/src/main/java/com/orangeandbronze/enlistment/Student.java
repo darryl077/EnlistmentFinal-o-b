@@ -2,11 +2,12 @@ package com.orangeandbronze.enlistment;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 public class Student {
 
 	private final Integer studentNumber;
-	private final Collection<Section> sections = new ArrayList<Section>();
+	private final Collection<Section> sections = new HashSet<Section>();
 
 	public Student(Integer studentNumber) {
 		if(studentNumber < 0){
