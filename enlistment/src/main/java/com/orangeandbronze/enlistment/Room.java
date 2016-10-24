@@ -3,7 +3,9 @@ package com.orangeandbronze.enlistment;
 public class Room {
 	
 	private final String roomName;
-	private  int capacity = 2;
+	private static int roomCapacity = 3;
+	private static int capacityNum = 0;
+	
 	
 	public Room(String roomName){
 		if(roomName == null){
@@ -12,16 +14,14 @@ public class Room {
 		if(!roomName.matches("[A-Za-z0-9]+")){
 			throw new IllegalArgumentException("Room name must be alphanumeric. Was: " + roomName);
 		}
-
-		checkRoomCapacity();
+		if(capacityNum == roomCapacity){
+			throw new IllegalArgumentException("Room Capacity Reached!");
+		}
+		
 		this.roomName = roomName;		
+		capacityNum++;
 	}
 	
-	public void checkRoomCapacity(){		
-		if(capacity < 0){
-			throw new IllegalArgumentException("Max room capacity reached!");
-		}else capacity--;
-	}
 
 	@Override
 	public int hashCode() {

@@ -10,7 +10,7 @@ public class RoomTest {
 	public void roomIsNotNull() {
 		Room room = new Room("RM1");
 		assertNotNull(room);
-	}
+	} 
 
 	@Test
 	public void roomIsalpahNumeric() {
@@ -19,11 +19,12 @@ public class RoomTest {
 	}
 	
 	
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void roomCapacityTest(){
-		Room room = new Room("RM1");
+		Room room1 = new Room("RM1");
 		Room room2 = new Room("RM1");
 		Room room3 = new Room("RM1");
+		
 
 	}
 
