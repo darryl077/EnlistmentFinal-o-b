@@ -12,9 +12,9 @@ public class Semester {
 //			throw new NullPointerException("semesterId must not be null. Was: " + semesterId);
 //		}
 //		
-//		if(section == null){
-//			throw new NullPointerException("section nmust not be null. Was: " + semesterId);
-//		}
+		if(semesterId == null){
+			throw new NullPointerException("semesterId nmust not be null. Was: " + semesterId);
+		}
 		
 		if(!semesterId.equals("open semester")){
 			throw new SemesterNotOpenException("Selected semester is no longer open Was: " + semesterId);

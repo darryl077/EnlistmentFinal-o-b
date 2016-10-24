@@ -6,9 +6,9 @@ public class Section {
 	private final Schedule schedule;
 	private final Room room;
 	private final Subject subject;
+	private final Semester semester;
 	
-	
-	public Section(String sectionId, Schedule schedule, Room room, Subject subject){
+	public Section(String sectionId, Schedule schedule, Room room, Subject subject,Semester semester){
 
 		if(!sectionId.matches("[A-Za-z0-9]+")){
 			throw new IllegalArgumentException("Section ID must be alphanumeric. Was: " + sectionId);
@@ -26,6 +26,7 @@ public class Section {
 		this.schedule = schedule;
 		this.room = room;
 		this.subject = subject;
+		this.semester = semester;
 	}
 
 	public Schedule getSchedule() {
@@ -74,6 +75,9 @@ public class Section {
 	}
 
 	void checkForConflictWith(Section other){
+		if(!checkForTimeOverlaps(other.schedule)){
+			throw new InvalidTimeException("The periods time is invalid");
+		}
 		if(this.schedule.equals(other.schedule)){
 			throw new ScheduleconflictException("This section has same schedule with other section");
 			
@@ -87,6 +91,20 @@ public class Section {
 			throw new SubjectconflictException("This Subject is already enlisted2");
 			
 		}
+	}
+	
+	boolean checkForTimeOverlaps(Schedule other){
+		boolean flag = true;
+		String lowerBound = other.getPeriod().toString().substring(1);
+		String upperBound = other.getPeriod2().toString().substring(1);
+		System.out.println(lowerBound);
+		System.out.println(upperBound);
+		if(Integer.valueOf(lowerBound) >= Integer.valueOf(upperBound)){
+			System.out.println(flag);
+			flag = false;
+		}
+		System.out.println(flag);
+		return flag;
 	}
 	
 }

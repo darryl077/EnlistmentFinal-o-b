@@ -2,20 +2,32 @@ package com.orangeandbronze.enlistment;
 
 
 public class Schedule {
-
+	
 	private final Days days;
 	private final Period period;
+	private final Period period2;
 
-	public Schedule(Days days, Period period) {
+	public Days getDays() {
+		return days;
+	}
+
+
+	public Period getPeriod() {
+		return period;
+	}
+
+
+	public Period getPeriod2() {
+		return period2;
+	}
+
+
+	public Schedule(Days days, Period period,Period period2) {
 		this.days = days;
 		this.period = period;
+		this.period2 = period2;
 	}
 
-	@Override
-	public String toString(){
-		
-		return days + " " + period;
-	}
 
 	@Override
 	public int hashCode() {

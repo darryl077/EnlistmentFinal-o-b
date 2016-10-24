@@ -2,6 +2,6 @@ package com.orangeandbronze.enlistment;
 
 public enum Period {
 	
-	P0830, P1000, P1130, P13000, P1430, P1600
+	P830,P930, P1000, P1130, P1300, P1430, P1600
 	
 }

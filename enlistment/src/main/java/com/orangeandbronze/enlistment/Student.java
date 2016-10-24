@@ -3,8 +3,6 @@ package com.orangeandbronze.enlistment;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.management.RuntimeErrorException;
-
 public class Student {
 
 	private final Integer studentNumber;
@@ -46,7 +44,11 @@ public class Student {
 		if (newSection == null){
 			throw new NullPointerException("Section cannot be null.");
 		}
-
+		
+		if(!checkForTimeOverlaps(newSection.getSchedule())){
+			throw new InvalidTimeException("The periods time is invalid");
+		}
+		
 		for(Section currSection: sections){
 			currSection.checkForConflictWith(newSection);			
 			
@@ -55,10 +57,24 @@ public class Student {
 		sections.add(newSection);
 		
 	}
+	
 	public Collection<Section> getSections(){
 		
 		return new ArrayList<>(sections);
 		
+	}
+	boolean checkForTimeOverlaps(Schedule other){
+		boolean flag = true;
+		String lowerBound = other.getPeriod().toString().substring(1);
+		String upperBound = other.getPeriod2().toString().substring(1);
+		System.out.println(lowerBound);
+		System.out.println(upperBound);
+		if(Integer.valueOf(lowerBound) >= Integer.valueOf(upperBound)){
+			System.out.println(flag);
+			flag = false;
+		}
+		System.out.println(flag);
+		return flag;
 	}
 		
 	

@@ -1,5 +1,5 @@
 package com.orangeandbronze.enlistment;
 
 public enum Course {
-	Math, Science, English
+	Math1, Math2, Science, English
 }
