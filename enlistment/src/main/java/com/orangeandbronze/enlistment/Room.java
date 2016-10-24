@@ -3,7 +3,7 @@ package com.orangeandbronze.enlistment;
 public class Room {
 	
 	private final String roomName;
-	private static int capacity = 2;
+	private  int capacity = 2;
 	
 	public Room(String roomName){
 		if(roomName == null){
