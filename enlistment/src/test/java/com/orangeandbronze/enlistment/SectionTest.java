@@ -19,6 +19,7 @@ public class SectionTest {
 	public void sectionIdHasSpecialCharacters(){
 		Subject subject = new Subject("ABC123", Course.English);
 		Section section = new Section("ABC123!@#", new Schedule(Days.MTH, Period.P0830),new Room("RM1"),subject);
+		assertNotNull(section);
 	}
 	
 	@Test
